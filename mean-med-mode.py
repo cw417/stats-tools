@@ -3,8 +3,10 @@ def parse_nums(nums):
   Takes in string of numbers separated by commas.
   Returns sorted array of numbers.
   """
-  nums = nums.replace(" ", "").split(",")
-  nums = [float(i) for i in nums]
+  # if nums is a string, parse into numbers
+  if isinstance(nums, str):
+    nums = nums.replace(" ", "").split(",")
+    nums = [float(i) for i in nums]
   nums.sort()
   return nums
 
