@@ -79,6 +79,7 @@ def get_data(nums):
 def main(nums):
   """Runs all methods. Prints output."""
   data = get_data(nums)
+  print()
   for k,v in data.items():
     print(f"{k}: {v}")
   return data
