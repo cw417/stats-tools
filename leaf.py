@@ -63,7 +63,7 @@ def print_plot(leaf_plot_dict):
     print(line)
 
 def main(nums):
-  stems_per_int = int(input("How many stems per integer?\n"))
+  stems_per_int = int(input("\nHow many stems per integer?\n"))
   stems = get_stems(nums, stems_per_int)
   stem_dict = make_stem_dict(nums, stems)
   stem_dict = remove_blank_stems(stem_dict)
