@@ -4,48 +4,85 @@ from statistics import mode
 from statistics import quantiles
 from statistics import stdev
 
-def parse_nums(nums):
-  """
-  Takes in string of numbers separated by commas.
-  Returns sorted array of numbers.
-  """
-  # if nums is a string, parse into numbers
-  if isinstance(nums, str):
-    nums = nums.replace(" ", "").split(",")
-    nums = [float(i) for i in nums]
-  nums.sort()
-  return nums
+# set number of decimal places to round to
+decimal_places = 4
+
+def get_mean(nums):
+  """Takes in array of numbers. Returns mean."""
+  return round(mean(nums), decimal_places)
+
+def get_median(nums):
+  """Takes in array of numbers. Returns median."""
+  return median(nums)
+
+def get_mode(nums):
+  """Takes in array of numbers. Returns mode."""
+  return mode(nums)
 
 def get_range(nums):
   """Takes in array of numbers. Returns range."""
   return nums[-1] - nums[0]
 
-def print_formatted(mea, med, mo, ran, quarts, iqr, std_dev, outliers):
-  """Print formatted data."""
-  print(f'Mean: {mea}')
-  print(f'Median: {med}')
-  print(f'Mode: {mo}')
-  print(f'Range: {ran}')
-  print(f'Quartiles: Q1({quarts[0]}) Q2({quarts[1]}) Q3({quarts[2]})')
-  print(f'IQR: {iqr}')
-  print(f'Outliers: [{outliers[0]}, {outliers[1]}]')
-  print(f'Std dev: {std_dev}')
+def get_quartiles(nums):
+  """Takes in array of numbers. Returns quartiles."""
+  return quantiles(nums, n=4)
+
+def get_iqr(nums):
+  """Takes in array of numbers. Returns IQR."""
+  quarts = get_quartiles(nums)
+  return quarts[2] - quarts[0]
+
+def get_outliers(nums):
+  """
+  Returns array of [boundaries, outliers].
+  boundaries is an array of [lower, upper] bounds.
+  outliers is an array of all outliers.
+  """
+  quarts = get_quartiles(nums)
+  iqr = get_iqr(nums)
+  bounds = [quarts[0] - (iqr*1.5), quarts[2] + (iqr*1.5)]
+  outliers = [i for i in nums if i < bounds[0] or i > bounds[1]]
+  return [bounds, outliers]
+
+def get_std_dev(nums):
+  """Takes in array of numbers. Returns mode."""
+  return round(stdev(nums), decimal_places)
+
+def get_variance(nums):
+  """Takes in array of numbers. Returns variance."""
+  nums_sq = [i**2 for i in nums]
+  sum_1 = sum(nums)
+  top_right = (sum_1**2) / len(nums)
+  top_left = sum(nums_sq)
+  return round((top_left - top_right) / (len(nums) - 1), decimal_places)
+
+def get_data(nums):
+  """
+  Runs all stats methods.
+  Returns dictionary.\n
+  Keys: mean, median, mode, range, quartiles, iqr, outliers, std_dev, variance
+  """
+  nums.sort()
+  data = {}
+  data["mean"] = get_mean(nums)
+  data["median"] = get_median(nums)
+  data["mode"] = get_mode(nums)
+  data["range"] = get_range(nums)
+  data["quartiles"] = get_quartiles(nums)
+  data["iqr"] = get_iqr(nums)
+  data["outliers"] = get_outliers(nums)
+  data["std_dev"] = get_std_dev(nums)
+  data["variance"] = get_variance(nums)
+  return data
+
 
 def main(nums):
-  nums = parse_nums(nums)
-  mea = mean(nums)
-  med = median(nums)
-  mo = mode(nums)
-  ran = get_range(nums)
-  quarts = quantiles(nums, n=4)
-  iqr = quarts[2] - quarts[0]
-  std_dev = stdev(nums)
-  outliers = [quarts[0] - (iqr*1.5), quarts[2] + (iqr*1.5)]
-  print_formatted(mea, med, mo, ran, quarts, iqr, std_dev, outliers)
+  """Runs all methods. Prints output."""
+  data = get_data(nums)
+  for k,v in data.items():
+    print(f"{k}: {v}")
+  return data
 
 if __name__ == '__main__':
-  #nums1 = "5, 6, 6, 8, 7, 7, 9 , 5, 4, 8, 11, 6, 7, 8, 7"
-  #nums2 = "5,6,6,8,7,7,9,5,4,8,11,6,7,8,7"
-  nums3 = "5,8,15,26,10,18,3,12,6,14,11"
-  #nums = input("Please enter the numbers separated by commas:\n")
-  main(nums3)
+  nums = [4, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 11]
+  main(nums)
