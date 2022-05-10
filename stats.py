@@ -41,7 +41,8 @@ def get_outliers(nums):
   quarts = get_quartiles(nums)
   iqr = get_iqr(nums)
   bounds = [quarts[0] - (iqr*1.5), quarts[2] + (iqr*1.5)]
-  outliers = [i for i in nums if i < bounds[0] or i > bounds[1]]
+  outer_bounds = [quarts[0] - (iqr*3), quarts[2] + (iqr*3)]
+  outliers = [i for i in nums if (i < bounds[0] and i >= outer_bounds[0]) or (i > bounds[1] and i <= outer_bounds[1])]
   return [bounds, outliers]
 
 def get_extremes(nums):
