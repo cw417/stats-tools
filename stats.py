@@ -69,6 +69,22 @@ def get_variance(nums):
   top_left = sum(nums_sq)
   return round((top_left - top_right) / (len(nums) - 1), decimal_places)
 
+def get_whiskers(nums):
+  """Takes in array of numbers. Returns array of [left_whisker_length, right_whisker_length]."""
+  bounds = get_outliers(nums)
+  quarts = get_quartiles(nums)
+  lower = bounds[0][0]
+  upper = bounds[0][1]
+  fenced_nums = [i for i in nums if (i > lower and i < upper)]
+  smallest_fenced = min(fenced_nums)
+  largest_fenced = max(fenced_nums)
+  q1 = quarts[0]
+  q3 = quarts[2]
+  left_length = q1 - smallest_fenced
+  right_length = largest_fenced - q3
+  return [left_length, right_length]
+
+
 def get_data(nums):
   """
   Runs all stats methods.
@@ -85,6 +101,7 @@ def get_data(nums):
   data["iqr"] = get_iqr(nums)
   data["outliers"] = get_outliers(nums)
   data["extremes"] = get_extremes(nums)
+  data["whiskers"] = get_whiskers(nums)
   data["stdev"] = get_stdev(nums)
   data["variance"] = get_variance(nums)
   return data
@@ -101,3 +118,4 @@ def main(nums):
 if __name__ == '__main__':
   nums = [4, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 11]
   main(nums)
+40, 43, 50, 52, 58, 60, 60, 64, 64, 65 ,65, 66, 66, 67, 68, 69 ,69, 70, 70, 74,79, 81, 91, 102
