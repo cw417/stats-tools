@@ -57,7 +57,7 @@ def get_extremes(nums):
   extremes = [i for i in nums if i < bounds[0] or i > bounds[1]]
   return [bounds, extremes]
 
-def get_std_dev(nums):
+def get_stdev(nums):
   """Takes in array of numbers. Returns mode."""
   return round(stdev(nums), decimal_places)
 
@@ -85,7 +85,7 @@ def get_data(nums):
   data["iqr"] = get_iqr(nums)
   data["outliers"] = get_outliers(nums)
   data["extremes"] = get_extremes(nums)
-  data["std_dev"] = get_std_dev(nums)
+  data["stdev"] = get_stdev(nums)
   data["variance"] = get_variance(nums)
   return data
 
