@@ -53,13 +53,17 @@ def main():
   Prints result.
   """
   inp = input("Permutation or combination? (p/c)\n").lower()
+  inp = inp.lower()
   if inp == "p":
-    data = get_permutation()
+    nums = get_nums()
+    data = get_permutation(nums)
     print(data)
   else:
     inp = input("Single or combined combination? (s/c)\n")
+    inp = inp.lower()
     if inp == "s":
-      data = get_combination()
+      nums = get_nums()
+      data = get_combination(nums)
       print(data)
     else:
       data = get_combined()
