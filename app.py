@@ -34,31 +34,34 @@ if __name__ == '__main__':
     print("(4) - Permutations and Combinations")
     print("Please select an option:")
     action = input("")
+    action = action.lower()
 
-    if action.lower() == 'q':
+    if action == 'q':
       exit()
 
-    if (nums == []):
+    if (nums == [] and action != "4"):
       nums = get_num_input()
 
     # re-enter numbers
-    if action.lower() == "0":
+    if action == "0":
       nums = get_num_input()
 
-    print(f"\nCount of numbers entered: {len(nums)}")
+    # print total, if numbers entered
+    if action != "4":
+      print(f"\nCount of numbers entered: {len(nums)}")
 
     # descriptive stats
-    if action.lower() == "1":
+    if action == "1":
       stats.main(nums)
 
     # leaf and stem plot
-    if action.lower() == "2":
+    if action == "2":
       leaf.main(nums)
 
     # frequency distribution chart
-    if action.lower() == "3":
+    if action == "3":
       freq_distrib.main(nums)
 
     # permutations and combinations
-    if action.lower() == "4":
-      permutes.main(nums)
+    if action == "4":
+      permutes.main()
