@@ -1,6 +1,7 @@
 import stats
 import freq_distrib
 import leaf
+import permutes
 
 def parse_nums(nums):
   """
@@ -30,6 +31,7 @@ if __name__ == '__main__':
     print("(1) - Descriptive Statistics")
     print("(2) - Leaf and Stem Plot")
     print("(3) - Frequency Distribution Chart")
+    print("(4) - Permutations and Combinations")
     print("Please select an option:")
     action = input("")
 
@@ -56,4 +58,7 @@ if __name__ == '__main__':
     # frequency distribution chart
     if action.lower() == "3":
       freq_distrib.main(nums)
-    
+
+    # permutations and combinations
+    if action.lower() == "4":
+      permutes.main(nums)
