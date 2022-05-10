@@ -44,6 +44,18 @@ def get_outliers(nums):
   outliers = [i for i in nums if i < bounds[0] or i > bounds[1]]
   return [bounds, outliers]
 
+def get_extremes(nums):
+  """
+  Returns array of [boundaries, outliers].
+  boundaries is an array of [lower, upper] bounds.
+  outliers is an array of all outliers.
+  """
+  quarts = get_quartiles(nums)
+  iqr = get_iqr(nums)
+  bounds = [quarts[0] - (iqr*3), quarts[2] + (iqr*3)]
+  extremes = [i for i in nums if i < bounds[0] or i > bounds[1]]
+  return [bounds, extremes]
+
 def get_std_dev(nums):
   """Takes in array of numbers. Returns mode."""
   return round(stdev(nums), decimal_places)
@@ -71,6 +83,7 @@ def get_data(nums):
   data["quartiles"] = get_quartiles(nums)
   data["iqr"] = get_iqr(nums)
   data["outliers"] = get_outliers(nums)
+  data["extremes"] = get_extremes(nums)
   data["std_dev"] = get_std_dev(nums)
   data["variance"] = get_variance(nums)
   return data
