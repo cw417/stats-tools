@@ -47,9 +47,9 @@ def get_outliers(nums):
 
 def get_extremes(nums):
   """
-  Returns array of [boundaries, outliers].
+  Returns array of [boundaries, extremes].
   boundaries is an array of [lower, upper] bounds.
-  outliers is an array of all outliers.
+  extremes is an array of all extreme values.
   """
   quarts = get_quartiles(nums)
   iqr = get_iqr(nums)
@@ -84,7 +84,6 @@ def get_whiskers(nums):
   right_length = largest_fenced - q3
   return [left_length, right_length]
 
-
 def get_data(nums):
   """
   Runs all stats methods.
@@ -106,7 +105,6 @@ def get_data(nums):
   data["variance"] = get_variance(nums)
   return data
 
-
 def main(nums):
   """Runs all methods. Prints output."""
   data = get_data(nums)
@@ -118,4 +116,3 @@ def main(nums):
 if __name__ == '__main__':
   nums = [4, 5, 5, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 9, 11]
   main(nums)
-40, 43, 50, 52, 58, 60, 60, 64, 64, 65 ,65, 66, 66, 67, 68, 69 ,69, 70, 70, 74,79, 81, 91, 102
