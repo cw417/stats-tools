@@ -62,7 +62,14 @@ def print_plot(leaf_plot_dict):
       line = f'{line}{num}'
     print(line)
 
+def check_num_type(nums):
+  inp = input("Are the numbers integers or floats? (i/f)\n")
+  if inp.lower() == "i":
+    return [(i/10) for i in nums]
+  return nums
+
 def main(nums):
+  nums = check_num_type(nums)
   stems_per_int = int(input("\nHow many stems per integer?\n"))
   stems = get_stems(nums, stems_per_int)
   stem_dict = make_stem_dict(nums, stems)
@@ -71,5 +78,6 @@ def main(nums):
   print_plot(leaf_plot)
 
 if __name__ == '__main__':
-  nums = [7.2, 8.0, 8.2, 5.8, 5.9, 8.5, 7.8, 8.2, 7.7, 6.8, 7.9, 6.8, 5.6, 7.5, 6.8, 9.4, 7.7, 5.7, 8.6, 7.2, 9.0, 6.7, 7.1, 7.5, 7.7]
-  main(nums)
+  x = [4.8, 4.6, 4.5, 5.3, 5.5, 5.9, 5.8, 5.7, 5.4, 5.3, 4.9, 4.7, 5.3, 5.7, 5.8, 4.5, 6.0, 6.2, 6.1, 6.4, 6.6, 6.5, 6.2, 6.0, 6.1]
+  y = [(i*10) for i in x]
+  main(y)
