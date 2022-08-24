@@ -23,26 +23,26 @@ Stats Tools can output formatted statistics, leaf-and-stem plots, frequency dist
 ## Examples
 
 - Descriptive Statistics <br/>
-  ![Example 1](images/ex-1.png)
+![Example 1](images/ex-1.png)
 
 <br/>
 
-- Leaf and Stem plot
-  ![Example 2](images/ex-2.png)
+- Leaf and Stem plot <br/>
+![Example 2](images/ex-2.png)
 
 <br/>
 
-- Frequency Distribtion Chart
-  ![Example 3](images/ex-3.png)
+- Frequency Distribtion Chart <br/>
+![Example 3](images/ex-3.png)
 
 <br/>
 
 - Permutations and Combinations calculator
-  - 5P4
+  - 5P4 <br/>
   ![Example 4a](images/ex-4-p.png)
 
-  - 5C3
+  - 5C3 <br/>
   ![Example 4b](images/ex-4-c.png)
   
-  - (3C1 * 9C3) / 12C4
+  - (3C1 * 9C3) / 12C4 <br/>
   ![Example 4c](images/ex-4-cc.png)
