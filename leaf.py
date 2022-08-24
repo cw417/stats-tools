@@ -55,6 +55,7 @@ def make_leaf_plot(stem_dict):
   return {k:[round((i-int(k))*10) for i in v] for (k,v) in stem_dict.items() for (k,v) in stem_dict.items()}
 
 def print_plot(leaf_plot_dict):
+  print() 
   for k,v in leaf_plot_dict.items():
     line = f'{int(k)}|'
     for num in leaf_plot_dict.get(k):

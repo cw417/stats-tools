@@ -14,8 +14,8 @@ def get_nums():
   Return as array of integers. 
   Only integer numbers should be entered by the user.
   """
-  upper = int(input("Upper number?\n"))
-  lower = int(input("Lower number?\n"))
+  upper = int(input("Total set size?\n"))
+  lower = int(input("How many to choose?\n"))
   return [upper, lower]
 
 def get_permutation(nums):
