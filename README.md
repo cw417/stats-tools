@@ -22,7 +22,7 @@ Stats Tools can output formatted statistics, leaf-and-stem plots, frequency dist
 
 ## Examples
 
-- Descriptive Statistics
+- Descriptive Statistics <br/>
   ![Example 1](images/ex-1.png)
 
 <br/>
