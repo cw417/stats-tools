@@ -12,11 +12,11 @@ Stats Tools can output formatted statistics, leaf-and-stem plots, frequency dist
 - The user is prompted for the type of operation you wish to perform.
   - The operation is selected by entering an integer, 0 - 4.
   - Options are:
-    ( 0 ) Re-enter numbers
-    ( 1 ) Descriptive Statistics
-    ( 2 ) Leaf and Stem Plot
-    ( 3 ) Frequency Distribution Chart
-    ( 4 ) Permutations and Combinations calculator
+    * ( 0 ) Re-enter numbers
+    * ( 1 ) Descriptive Statistics
+    * ( 2 ) Leaf and Stem Plot
+    * ( 3 ) Frequency Distribution Chart
+    * ( 4 ) Permutations and Combinations calculator
 - When prompted, please enter a string of numbers separated by commas.
 - Enter `q` in the 'Options Menu' to quit.
 
